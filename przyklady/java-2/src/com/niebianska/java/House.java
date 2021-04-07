@@ -9,6 +9,7 @@ public class House {
     private final double length;
     private Room[] rooms;
     private final int numberOfFloors;
+    private final Door door;
     //private final int numberOfRooms;
 
 
@@ -26,20 +27,22 @@ public class House {
 //    }
 
 
-    public House(double width, double length, int numberOfFloors){
+    public House(double width, double length, int numberOfFloors, String doorColor){
         this.width = width;
         this.length = length;
         this.numberOfFloors = numberOfFloors;
 
         this.rooms = new Room[0];
+
+        this.door = new Door(doorColor);
     }
 
-    public static House buildHouse(double width, double length, int numberOfFloors){
+    public static House buildHouse(double width, double length, int numberOfFloors, String doorColor){
         if(numberOfFloors > maxFloors){
             return null;
         }
 
-        return new House(width, length, numberOfFloors);
+        return new House(width, length, numberOfFloors, doorColor);
     }
 
     public void addRoom(String name, final int floor, int width, int length,  String color){
@@ -98,4 +101,18 @@ public class House {
                 numberOfFloors == house.numberOfFloors &&
                 Arrays.equals(rooms, house.rooms);
     }
+
+    public static class Door{
+        private final String color;
+
+
+        public Door(final String color) {
+            this.color = color;
+        }
+
+        String getColor() {
+            return color;
+        }
+    }
+
 }

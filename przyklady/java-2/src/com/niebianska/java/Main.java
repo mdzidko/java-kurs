@@ -40,12 +40,29 @@ public class Main {
         //House bigHouse = House.buildHouse(10, 12, 2, 8);
         //System.out.print(bigHouse.toString());
 
+
         //************************************************************************************************
         //FINAL
         //************************************************************************************************
         //System.out.println(House.maxFloors);
         //House.maxFloors = 4;
         //System.out.println(House.maxFloors);
+
+
+        //************************************************************************************************
+        //KLASY WEWNETRZNE
+        //************************************************************************************************
+        //House house = House.buildHouse(5, 5, 1, "red");
+        //House.Door door = house.new Door("white");
+        //House.Door door = new House.Door("red");
+
+
+        //************************************************************************************************
+        //DZIEDZICZENIE
+        //************************************************************************************************
+        Bird bird = new Bird("duck");
+        Animal shark = new Fish("shark");
+
 
         //************************************************************************************************
         //POROWNYWANIE OBIEKTOW
@@ -60,7 +77,7 @@ public class Main {
         System.out.println("city equals city3: " + (city.equals(city3)));
 
 
-        House houseOne = House.buildHouse(5, 5, 1);
+        House houseOne = House.buildHouse(5, 5, 1, "red");
         houseOne.addRoom("living room", 1, 3, 5, "white");
         houseOne.addRoom("bedroom", 1, 2, 3, "pink");
 
@@ -68,7 +85,7 @@ public class Main {
         System.out.println("House number of rooms: " + houseOne.getNumberOfRooms());
         System.out.println("House living area: " + houseOne.getLivingArea());
 
-        House houseTwo = House.buildHouse(5, 5, 1);
+        House houseTwo = House.buildHouse(5, 5, 1, "white");
         houseTwo.addRoom("living room", 1, 3, 5, "white");
         houseTwo.addRoom("bedroom", 1, 2, 3, "pink");
 
