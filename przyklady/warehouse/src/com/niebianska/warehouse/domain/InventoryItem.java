@@ -1,6 +1,8 @@
 package com.niebianska.warehouse.domain;
 
-public class InventoryItem {
+import java.util.Objects;
+
+public class InventoryItem{
     private final Item item;
     private long quantity;
 
@@ -13,19 +15,32 @@ public class InventoryItem {
         return quantity;
     }
 
-    public long increaseQuantityBy(long quantity){
+    public InventoryItem increaseQuantityBy(long quantity){
         if(quantity > 0) {
             this.quantity += quantity;
         }
 
-        return this.quantity;
+        return this;
     }
 
-    public long decreaseQuantityBy(long quantity){
+    public InventoryItem decreaseQuantityBy(long quantity){
         if(quantity > 0 && this.quantity - quantity >= 0) {
-            this.quantity += quantity;
+            this.quantity -= quantity;
         }
 
-        return this.quantity;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return item + ", quantity: " + quantity;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final InventoryItem that = (InventoryItem) o;
+        return Objects.equals(item, that.item);
     }
 }

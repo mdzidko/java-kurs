@@ -1,38 +1,27 @@
 package com.niebianska.warehouse.domain;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class Item {
-    private final UUID id;
     private final String name;
-    private final String type;
+    private final PackageType packageType;
 
-    public Item(final String name, final String type) {
-        this.id = UUID.randomUUID();
+    public Item(final String name, final String packageType) {
         this.name = name;
-        this.type = type;
-    }
-
-    public UUID getId() {
-        return id;
+        this.packageType = PackageType.valueOf(packageType.toUpperCase());
     }
 
     public String getName() {
         return name;
     }
 
-    public String getType() {
-        return type;
+    public PackageType getPackageType() {
+        return packageType;
     }
 
     @Override
     public String toString() {
-        return "Item{" +
-                "id: " + id +
-                "name: '" + name + '\'' +
-                "type: '" + type + '\'' +
-                '}';
+        return "name: " + name + ", packageType: " + packageType;
     }
 
     @Override
@@ -40,13 +29,6 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Item item = (Item) o;
-        return Objects.equals(id, item.id) &&
-                Objects.equals(name, item.name) &&
-                Objects.equals(type, item.type);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, type);
+        return Objects.equals(name, item.name) && Objects.equals(packageType, item.packageType);
     }
 }
