@@ -13,7 +13,7 @@ public class ShowInventoryOperation extends Operation{
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         System.out.println();
 
         for (final InventoryItem inventoryItem : inventory.getInventory()) {
@@ -21,5 +21,7 @@ public class ShowInventoryOperation extends Operation{
         }
 
         System.out.println();
+
+        return true;
     }
 }

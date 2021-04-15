@@ -7,8 +7,9 @@ public class Operation {
         this.label = label;
     }
 
-    public void execute(){
+    public boolean execute(){
         System.out.println("Executing " + toString());
+        return true;
     }
 
     @Override

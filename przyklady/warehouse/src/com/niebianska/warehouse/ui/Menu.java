@@ -5,16 +5,18 @@ import com.niebianska.warehouse.ui.operations.Operation;
 
 import java.util.Scanner;
 
-public class UserInterface {
+public class Menu {
     private final Scanner scanner = new Scanner(System.in);
     private final Operation[] operations;
 
-    public UserInterface(Operation[] operations) {
+    public Menu(Operation[] operations) {
         this.operations = operations;
     }
 
     public void run(){
-        while(true){
+        boolean running = true;
+
+        while(running){
             System.out.println("Choose operation:");
 
             printOperations();
@@ -25,7 +27,7 @@ public class UserInterface {
                 continue;
             }
 
-            operations[chosenOperation].execute();
+            running = operations[chosenOperation].execute();
         }
     }
 

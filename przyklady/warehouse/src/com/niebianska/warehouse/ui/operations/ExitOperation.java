@@ -8,14 +8,16 @@ public class ExitOperation extends Operation{
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want to exit? y/n");
 
         String scanned = scanner.next();
 
         if(scanned.equals("y")){
-            System.exit(0);
+            return false;
         }
+
+        return true;
     }
 }
