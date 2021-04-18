@@ -1,5 +1,7 @@
-package com.niebianska.warehouse.domain;
+package com.niebianska.warehouse.inventory;
 
+
+import com.niebianska.warehouse.item.Item;
 
 import java.util.Arrays;
 

@@ -1,6 +1,5 @@
-package com.niebianska.java;
+package com.niebianska.java.house;
 
-import java.util.Objects;
 
 public class Room {
     private final String name;
@@ -16,6 +15,7 @@ public class Room {
         this.length = length;
         this.color = color;
     }
+
 
     String getName() {
         return name;
@@ -43,28 +43,5 @@ public class Room {
 
     public void repaint(String color) {
         this.color = color;
-    }
-
-    @Override
-    public String toString() {
-        return "Room{" +
-                "name='" + name + '\'' +
-                ", floor=" + floor +
-                ", width=" + width +
-                ", length=" + length +
-                ", color='" + color + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        final Room room = (Room) o;
-        return floor == room.floor &&
-                Double.compare(room.width, width) == 0 &&
-                Double.compare(room.length, length) == 0 &&
-                Objects.equals(name, room.name) &&
-                Objects.equals(color, room.color);
     }
 }

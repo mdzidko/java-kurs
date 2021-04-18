@@ -1,4 +1,4 @@
-package com.niebianska.warehouse.domain;
+package com.niebianska.warehouse.item;
 
 import java.util.Objects;
 
@@ -17,11 +17,6 @@ public class Item {
 
     public PackageType getPackageType() {
         return packageType;
-    }
-
-    @Override
-    public String toString() {
-        return "name: " + name + ", packageType: " + packageType;
     }
 
     @Override

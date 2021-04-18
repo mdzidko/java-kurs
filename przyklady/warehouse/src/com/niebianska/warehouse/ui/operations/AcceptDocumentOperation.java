@@ -1,7 +1,7 @@
 package com.niebianska.warehouse.ui.operations;
 
-import com.niebianska.warehouse.domain.DocumentManager;
-import com.niebianska.warehouse.domain.Inventory;
+import com.niebianska.warehouse.document.DocumentManager;
+import com.niebianska.warehouse.inventory.Inventory;
 
 import java.util.Scanner;
 import java.util.UUID;

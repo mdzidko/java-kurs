@@ -1,6 +1,7 @@
-package com.niebianska.warehouse.domain;
+package com.niebianska.warehouse.document;
 
-import java.util.Arrays;
+import com.niebianska.warehouse.inventory.Inventory;
+
 import java.util.Objects;
 import java.util.UUID;
 
@@ -15,8 +16,21 @@ public class Document {
         this.status = DocumentStatus.NEW;
     }
 
+    public DocumentType getDocumentType(){
+        System.out.println("Generic document doesn't have type specified");
+        return null;
+    }
+
+    public DocumentStatus getStatus() {
+        return status;
+    }
+
     public UUID getNumber() {
         return number;
+    }
+
+    public DocumentLine[] getLines() {
+        return lines;
     }
 
     public static DocumentBuilder builder(){
@@ -25,11 +39,6 @@ public class Document {
 
     public void accept(Inventory inventory){
         System.out.println("Can't accept generic document");
-    }
-
-    @Override
-    public String toString() {
-        return "number: " + number + ", status: " + status.toString() + ", lines: " + Arrays.toString(lines);
     }
 
     @Override

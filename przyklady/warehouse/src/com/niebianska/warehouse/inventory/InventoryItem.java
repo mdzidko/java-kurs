@@ -1,4 +1,6 @@
-package com.niebianska.warehouse.domain;
+package com.niebianska.warehouse.inventory;
+
+import com.niebianska.warehouse.item.Item;
 
 import java.util.Objects;
 
@@ -9,6 +11,10 @@ public class InventoryItem{
     public InventoryItem(final Item item) {
         this.item = item;
         this.quantity = 0;
+    }
+
+    public Item getItem() {
+        return item;
     }
 
     public long getQuantity() {
@@ -29,11 +35,6 @@ public class InventoryItem{
         }
 
         return this;
-    }
-
-    @Override
-    public String toString() {
-        return item + ", quantity: " + quantity;
     }
 
     @Override

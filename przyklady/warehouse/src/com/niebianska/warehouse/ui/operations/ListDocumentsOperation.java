@@ -1,10 +1,12 @@
 package com.niebianska.warehouse.ui.operations;
 
-import com.niebianska.warehouse.domain.Document;
-import com.niebianska.warehouse.domain.DocumentManager;
+import com.niebianska.warehouse.document.DocumentManager;
+import com.niebianska.warehouse.ui.DocumentPrinter;
+import com.niebianska.warehouse.ui.TablePrinter;
 
 public class ListDocumentsOperation extends Operation{
     private final DocumentManager documentManager;
+    private final TablePrinter printer = new DocumentPrinter();
 
     public ListDocumentsOperation(final String label, final DocumentManager documentManager) {
         super(label);
@@ -14,11 +16,7 @@ public class ListDocumentsOperation extends Operation{
     @Override
     public boolean execute() {
         System.out.println();
-
-        for (final Document document : documentManager.getDocuments()) {
-            System.out.println(document);
-        }
-
+        printer.print(documentManager.getDocuments());
         System.out.println();
 
         return true;

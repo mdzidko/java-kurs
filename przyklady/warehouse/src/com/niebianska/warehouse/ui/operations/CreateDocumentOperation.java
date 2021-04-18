@@ -1,6 +1,11 @@
 package com.niebianska.warehouse.ui.operations;
 
-import com.niebianska.warehouse.domain.*;
+import com.niebianska.warehouse.document.Document;
+import com.niebianska.warehouse.document.DocumentBuilder;
+import com.niebianska.warehouse.document.DocumentManager;
+import com.niebianska.warehouse.document.DocumentType;
+import com.niebianska.warehouse.item.Item;
+import com.niebianska.warehouse.item.PackageType;
 import com.niebianska.warehouse.ui.Menu;
 
 import java.util.Arrays;
@@ -25,6 +30,22 @@ public class CreateDocumentOperation extends Operation{
 
     @Override
     public boolean execute() {
+        System.out.println("What document you want to create (1: Receive, 2: Issue)?");
+
+        Scanner scanner = new Scanner(System.in);
+        int documentType = scanner.nextInt();
+
+        if(documentType == 1){
+            documentBuilder.type(DocumentType.RECEIVE);
+        }
+        else if(documentType == 2){
+            documentBuilder.type(DocumentType.ISSUE);
+        }
+        else{
+            System.out.println("Wrong document type");
+            return true;
+        }
+
         menu.run();
         return true;
     }
@@ -36,7 +57,7 @@ public class CreateDocumentOperation extends Operation{
 
         @Override
         public boolean execute() {
-            Document newDocument = documentBuilder.buildReceive();
+            Document newDocument = documentBuilder.build();
             documentManager.addDocument(newDocument);
 
             return false;

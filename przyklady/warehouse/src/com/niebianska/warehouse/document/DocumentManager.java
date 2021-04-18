@@ -1,4 +1,6 @@
-package com.niebianska.warehouse.domain;
+package com.niebianska.warehouse.document;
+
+import com.niebianska.warehouse.inventory.Inventory;
 
 import java.util.Arrays;
 import java.util.UUID;

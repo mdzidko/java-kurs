@@ -1,8 +1,10 @@
-package com.niebianska.warehouse.domain;
+package com.niebianska.warehouse.document;
+
+import com.niebianska.warehouse.item.Item;
 
 import java.util.Objects;
 
-class DocumentLine {
+public class DocumentLine {
     private final Item item;
     private long quantity;
 
@@ -11,17 +13,12 @@ class DocumentLine {
         this.quantity = quantity;
     }
 
-    Item getItem() {
+    public Item getItem() {
         return item;
     }
 
     public long getQuantity() {
         return quantity;
-    }
-
-    @Override
-    public String toString() {
-        return item + ", quantity: " + quantity;
     }
 
     @Override
