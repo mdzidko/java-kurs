@@ -1,11 +1,11 @@
 package com.niebianska.warehouse.ui.operations;
 
 import com.niebianska.warehouse.inventory.Inventory;
-import com.niebianska.warehouse.ui.InventoryPrinter;
-import com.niebianska.warehouse.ui.TablePrinter;
+import com.niebianska.warehouse.ui.tableprinter.InventoryPrinter;
+import com.niebianska.warehouse.ui.tableprinter.TablePrinter;
 
 
-public class ShowInventoryOperation extends Operation{
+public class ShowInventoryOperation extends LabeledOperation{
     private final Inventory inventory;
     private final TablePrinter printer = new InventoryPrinter();
 

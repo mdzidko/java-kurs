@@ -5,12 +5,7 @@ import com.niebianska.warehouse.inventory.Inventory;
 
 public class Issue extends Document {
     public Issue(final DocumentLine[] lines) {
-        super(lines);
-    }
-
-    @Override
-    public DocumentType getDocumentType() {
-        return DocumentType.ISSUE;
+        super(DocumentType.ISSUE, lines);
     }
 
     @Override

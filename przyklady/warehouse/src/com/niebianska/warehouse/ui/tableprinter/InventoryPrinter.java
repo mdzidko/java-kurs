@@ -1,8 +1,8 @@
-package com.niebianska.warehouse.ui;
+package com.niebianska.warehouse.ui.tableprinter;
 
 import com.niebianska.warehouse.inventory.InventoryItem;
 
-public class InventoryPrinter extends  TablePrinter{
+public class InventoryPrinter extends HeaderTablePrinter {
     @Override
     protected void printHeaders() {
         System.out.printf("%-6s%-20s%-20s%-20s\n", "Lp", "Item name", "Package type", "Quantity");

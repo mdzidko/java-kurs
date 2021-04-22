@@ -6,7 +6,7 @@ import com.niebianska.warehouse.inventory.Inventory;
 import java.util.Scanner;
 import java.util.UUID;
 
-public class AcceptDocumentOperation extends Operation{
+public class AcceptDocumentOperation extends LabeledOperation{
     private final DocumentManager documentManager;
     private final Inventory inventory;
 

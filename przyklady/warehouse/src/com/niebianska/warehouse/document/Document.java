@@ -5,21 +5,22 @@ import com.niebianska.warehouse.inventory.Inventory;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Document {
+public abstract class Document {
     protected final UUID number;
     protected final DocumentLine[] lines;
     protected DocumentStatus status;
+    protected final DocumentType type;
 
-    Document(final DocumentLine[] lines) {
+    Document(final DocumentType type, final DocumentLine[] lines) {
+        this.type = type;
         this.number = UUID.randomUUID();
         this.lines = lines;
         this.status = DocumentStatus.NEW;
     }
 
-    public DocumentType getDocumentType(){
-        System.out.println("Generic document doesn't have type specified");
-        return null;
-    }
+    public abstract void accept(Inventory inventory);
+
+    public DocumentType getDocumentType() {return type; }
 
     public DocumentStatus getStatus() {
         return status;
@@ -31,14 +32,6 @@ public class Document {
 
     public DocumentLine[] getLines() {
         return lines;
-    }
-
-    public static DocumentBuilder builder(){
-        return new DocumentBuilder();
-    }
-
-    public void accept(Inventory inventory){
-        System.out.println("Can't accept generic document");
     }
 
     @Override

@@ -2,13 +2,17 @@ package com.niebianska.warehouse.inventory;
 
 
 import com.niebianska.warehouse.item.Item;
+import com.niebianska.warehouse.util.SearchPredicate;
+import com.niebianska.warehouse.util.TableSearch;
 
 import java.util.Arrays;
 
 public class Inventory {
     private InventoryItem[] items = new InventoryItem[0];
 
+
     public Inventory addItem(Item item, long quantity){
+
         InventoryItem inventoryItem = new InventoryItem(item);
         int itemIndex = searchItem(inventoryItem);
 
@@ -35,12 +39,12 @@ public class Inventory {
     }
 
     private int searchItem(InventoryItem inventoryItem) {
-        for (int i = 0; i < items.length; i++) {
-            if(items[i].equals(inventoryItem)){
-                return i;
+        return TableSearch.find(items, new SearchPredicate() {
+            @Override
+            public boolean evaluate(Object obj) {
+                return inventoryItem.equals(obj);
             }
-        }
-        return -1;
+        });
     }
 
     public InventoryItem[] getInventory(){

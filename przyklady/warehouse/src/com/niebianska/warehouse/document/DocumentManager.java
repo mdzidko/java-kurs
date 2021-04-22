@@ -1,6 +1,8 @@
 package com.niebianska.warehouse.document;
 
 import com.niebianska.warehouse.inventory.Inventory;
+import com.niebianska.warehouse.util.SearchPredicate;
+import com.niebianska.warehouse.util.TableSearch;
 
 import java.util.Arrays;
 import java.util.UUID;
@@ -29,11 +31,11 @@ public class DocumentManager {
     }
 
     private int searchDocument(UUID number) {
-        for (int i = 0; i < documents.length; i++) {
-            if(documents[i].getNumber().equals(number)){
-                return i;
+        return TableSearch.find(documents, new SearchPredicate() {
+            @Override
+            public boolean evaluate(Object obj) {
+                return ((Document)obj).getNumber().equals(number);
             }
-        }
-        return -1;
+        });
     }
 }

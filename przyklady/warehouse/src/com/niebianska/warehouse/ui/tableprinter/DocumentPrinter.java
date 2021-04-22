@@ -1,9 +1,9 @@
-package com.niebianska.warehouse.ui;
+package com.niebianska.warehouse.ui.tableprinter;
 
 import com.niebianska.warehouse.document.Document;
 import com.niebianska.warehouse.document.DocumentLine;
 
-public class DocumentPrinter extends TablePrinter{
+public class DocumentPrinter extends HeaderTablePrinter {
     @Override
     protected void printHeaders() {
         System.out.printf("%-6s%-40s%-20s%-20s\n", "Lp", "Document number", "Document type", "Document status");

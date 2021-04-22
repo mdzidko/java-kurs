@@ -1,9 +1,6 @@
 package com.niebianska.warehouse.ui.operations;
 
-import com.niebianska.warehouse.document.Document;
-import com.niebianska.warehouse.document.DocumentBuilder;
-import com.niebianska.warehouse.document.DocumentManager;
-import com.niebianska.warehouse.document.DocumentType;
+import com.niebianska.warehouse.document.*;
 import com.niebianska.warehouse.item.Item;
 import com.niebianska.warehouse.item.PackageType;
 import com.niebianska.warehouse.ui.Menu;
@@ -11,7 +8,7 @@ import com.niebianska.warehouse.ui.Menu;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class CreateDocumentOperation extends Operation{
+public class CreateDocumentOperation extends LabeledOperation{
     private final DocumentManager documentManager;
 
     private final Operation[] operations = {
@@ -21,7 +18,7 @@ public class CreateDocumentOperation extends Operation{
 
     private final Menu menu = new Menu(operations);
 
-    private final DocumentBuilder documentBuilder = Document.builder();
+    private DocumentBuilder documentBuilder;
 
     public CreateDocumentOperation(final String label, final DocumentManager documentManager) {
         super(label);
@@ -36,10 +33,20 @@ public class CreateDocumentOperation extends Operation{
         int documentType = scanner.nextInt();
 
         if(documentType == 1){
-            documentBuilder.type(DocumentType.RECEIVE);
+            documentBuilder = new DocumentBuilder(DocumentType.RECEIVE) {
+                @Override
+                protected Document createDocument() {
+                    return new Receive(this.lines);
+                }
+            };
         }
         else if(documentType == 2){
-            documentBuilder.type(DocumentType.ISSUE);
+            documentBuilder = new DocumentBuilder(DocumentType.ISSUE) {
+                @Override
+                protected Document createDocument() {
+                    return new Issue(this.lines);
+                }
+            };
         }
         else{
             System.out.println("Wrong document type");
@@ -50,7 +57,7 @@ public class CreateDocumentOperation extends Operation{
         return true;
     }
 
-    private class SaveDocumentOperation extends Operation {
+    private class SaveDocumentOperation extends LabeledOperation {
         public SaveDocumentOperation(final String label) {
             super(label);
         }
@@ -64,7 +71,7 @@ public class CreateDocumentOperation extends Operation{
         }
     }
 
-    private class AddItemOperation extends Operation {
+    private class AddItemOperation extends LabeledOperation {
         public AddItemOperation(final String label) {
             super(label);
         }

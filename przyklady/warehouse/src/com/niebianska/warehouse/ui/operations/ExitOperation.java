@@ -2,7 +2,7 @@ package com.niebianska.warehouse.ui.operations;
 
 import java.util.Scanner;
 
-public class ExitOperation extends Operation{
+public class ExitOperation extends LabeledOperation{
     public ExitOperation(final String label) {
         super(label);
     }

@@ -5,12 +5,7 @@ import com.niebianska.warehouse.inventory.Inventory;
 
 public class Receive extends Document {
     public Receive(final DocumentLine[] lines) {
-        super(lines);
-    }
-
-    @Override
-    public DocumentType getDocumentType() {
-        return DocumentType.RECEIVE;
+        super(DocumentType.RECEIVE, lines);
     }
 
     @Override

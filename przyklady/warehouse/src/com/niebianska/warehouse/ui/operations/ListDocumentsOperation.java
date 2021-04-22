@@ -1,10 +1,10 @@
 package com.niebianska.warehouse.ui.operations;
 
 import com.niebianska.warehouse.document.DocumentManager;
-import com.niebianska.warehouse.ui.DocumentPrinter;
-import com.niebianska.warehouse.ui.TablePrinter;
+import com.niebianska.warehouse.ui.tableprinter.DocumentPrinter;
+import com.niebianska.warehouse.ui.tableprinter.TablePrinter;
 
-public class ListDocumentsOperation extends Operation{
+public class ListDocumentsOperation extends LabeledOperation{
     private final DocumentManager documentManager;
     private final TablePrinter printer = new DocumentPrinter();
 
