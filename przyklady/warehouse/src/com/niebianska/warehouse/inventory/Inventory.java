@@ -31,9 +31,11 @@ public class Inventory {
         InventoryItem inventoryItem = new InventoryItem(item);
         int itemIndex = searchItem(inventoryItem);
 
-        if(itemIndex >= 0){
-            items[itemIndex].decreaseQuantityBy(quantity);
+        if(itemIndex < 0){
+            throw new ItemNotFoundException(item.getName());
         }
+
+        items[itemIndex].decreaseQuantityBy(quantity);
 
         return this;
     }

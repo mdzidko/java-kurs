@@ -1,6 +1,7 @@
 package com.niebianska.warehouse.ui.operations;
 
 import com.niebianska.warehouse.document.*;
+import com.niebianska.warehouse.document.exceptions.DocumentCreationException;
 import com.niebianska.warehouse.item.Item;
 import com.niebianska.warehouse.item.PackageType;
 import com.niebianska.warehouse.ui.Menu;
@@ -64,8 +65,13 @@ public class CreateDocumentOperation extends LabeledOperation{
 
         @Override
         public boolean execute() {
-            Document newDocument = documentBuilder.build();
-            documentManager.addDocument(newDocument);
+            try {
+                Document newDocument = documentBuilder.build();
+                documentManager.addDocument(newDocument);
+            }
+            catch(DocumentCreationException ex){
+                System.out.println(ex);
+            }
 
             return false;
         }

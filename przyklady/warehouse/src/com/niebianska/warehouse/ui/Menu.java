@@ -17,17 +17,23 @@ public class Menu {
         boolean running = true;
 
         while(running){
-            System.out.println("Choose operation:");
+            try {
 
-            printOperations();
-            int chosenOperation = selectOperation();
+                System.out.println("Choose operation:");
 
-            if(!isOperationNumberValid(chosenOperation)){
-                System.out.println("Wrong operation number. Select again.");
-                continue;
+                printOperations();
+                int chosenOperation = selectOperation();
+
+                if (!isOperationNumberValid(chosenOperation)) {
+                    System.out.println("Wrong operation number. Select again.");
+                    continue;
+                }
+
+                running = operations[chosenOperation].execute();
             }
-
-            running = operations[chosenOperation].execute();
+            catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
         }
     }
 

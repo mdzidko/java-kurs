@@ -1,6 +1,8 @@
 package com.niebianska.warehouse.ui.operations;
 
 import com.niebianska.warehouse.document.DocumentManager;
+import com.niebianska.warehouse.document.exceptions.DocumentNotFoundException;
+import com.niebianska.warehouse.document.exceptions.WrongDocumentStatusException;
 import com.niebianska.warehouse.inventory.Inventory;
 
 import java.util.Scanner;
@@ -23,7 +25,12 @@ public class AcceptDocumentOperation extends LabeledOperation{
         System.out.println("Document number:");
         UUID number = UUID.fromString(scanner.next());
 
-        documentManager.acceptDocument(number, inventory);
+        try {
+            documentManager.acceptDocument(number, inventory);
+        }
+        catch(WrongDocumentStatusException | DocumentNotFoundException ex){
+            System.out.println(ex.getMessage());
+        }
 
         return true;
     }

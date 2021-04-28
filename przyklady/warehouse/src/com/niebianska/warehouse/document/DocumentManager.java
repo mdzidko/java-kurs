@@ -1,5 +1,6 @@
 package com.niebianska.warehouse.document;
 
+import com.niebianska.warehouse.document.exceptions.DocumentNotFoundException;
 import com.niebianska.warehouse.inventory.Inventory;
 import com.niebianska.warehouse.util.SearchPredicate;
 import com.niebianska.warehouse.util.TableSearch;
@@ -23,8 +24,7 @@ public class DocumentManager {
         int index = searchDocument(number);
 
         if(index < 0){
-            System.out.println("Document with number: " + number.toString() + " not found");
-            return;
+            throw new DocumentNotFoundException(number);
         }
 
         documents[index].accept(inventory);

@@ -1,5 +1,5 @@
 package com.niebianska.warehouse.document;
 
-enum DocumentStatus {
+public enum DocumentStatus {
     NEW, ACCEPTED
 }

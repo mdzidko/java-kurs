@@ -1,5 +1,6 @@
 package com.niebianska.warehouse.document;
 
+import com.niebianska.warehouse.document.exceptions.DocumentCreationException;
 import com.niebianska.warehouse.item.Item;
 
 import java.util.Arrays;
@@ -23,8 +24,7 @@ public abstract class DocumentBuilder {
 
     public Document build(){
         if(lines.length == 0){
-            System.out.println("Can't create document with no lines");
-            return null;
+            throw new DocumentCreationException("Can't create document with no lines");
         }
 
         return createDocument();
