@@ -5,7 +5,7 @@ import com.niebianska.warehouse.document.exceptions.WrongDocumentStatusException
 import com.niebianska.warehouse.inventory.Inventory;
 
 public class Issue extends Document {
-    public Issue(final DocumentLine[] lines) {
+    public Issue(final Iterable<DocumentLine> lines) {
         super(DocumentType.ISSUE, lines);
     }
 

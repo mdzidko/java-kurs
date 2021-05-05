@@ -44,4 +44,9 @@ public class InventoryItem{
         final InventoryItem that = (InventoryItem) o;
         return Objects.equals(item, that.item);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(item);
+    }
 }

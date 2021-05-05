@@ -4,8 +4,9 @@ package com.niebianska.warehouse.document;
 import com.niebianska.warehouse.document.exceptions.WrongDocumentStatusException;
 import com.niebianska.warehouse.inventory.Inventory;
 
+
 public class Receive extends Document {
-    public Receive(final DocumentLine[] lines) {
+    public Receive(final Iterable<DocumentLine> lines) {
         super(DocumentType.RECEIVE, lines);
     }
 

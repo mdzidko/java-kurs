@@ -3,10 +3,11 @@ package com.niebianska.warehouse.document;
 import com.niebianska.warehouse.document.exceptions.DocumentCreationException;
 import com.niebianska.warehouse.item.Item;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class DocumentBuilder {
-    protected DocumentLine[] lines = new DocumentLine[0];
+    protected List<DocumentLine> lines = new ArrayList<>();
     private final DocumentType documentType;
 
     protected DocumentBuilder(final DocumentType documentType) {
@@ -15,15 +16,13 @@ public abstract class DocumentBuilder {
 
     public DocumentBuilder line(Item item, long quantity) {
         DocumentLine newLine = new DocumentLine(item, quantity);
-
-        lines = Arrays.copyOf(lines, lines.length + 1);
-        lines[lines.length - 1] = newLine;
+        lines.add(newLine);
 
         return this;
     }
 
     public Document build(){
-        if(lines.length == 0){
+        if(lines.isEmpty()){
             throw new DocumentCreationException("Can't create document with no lines");
         }
 

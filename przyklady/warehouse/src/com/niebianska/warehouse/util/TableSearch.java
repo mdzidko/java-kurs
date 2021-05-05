@@ -1,9 +1,11 @@
 package com.niebianska.warehouse.util;
 
+import java.util.function.Predicate;
+
 public class TableSearch {
-    public static int find(Object[] table, SearchPredicate predicate){
+    public static <T> int find(T[] table, Predicate<T> predicate){
         for (int i = 0; i < table.length; i++) {
-            if(predicate.evaluate(table[i])){
+            if(predicate.test(table[i])){
                 return i;
             }
         }

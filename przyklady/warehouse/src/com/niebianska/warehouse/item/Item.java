@@ -26,4 +26,9 @@ public class Item {
         final Item item = (Item) o;
         return Objects.equals(name, item.name) && Objects.equals(packageType, item.packageType);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, packageType);
+    }
 }

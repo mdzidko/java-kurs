@@ -2,7 +2,6 @@ package com.niebianska.warehouse.inventory;
 
 
 import com.niebianska.warehouse.item.Item;
-import com.niebianska.warehouse.util.SearchPredicate;
 import com.niebianska.warehouse.util.TableSearch;
 
 import java.util.Arrays;
@@ -41,12 +40,7 @@ public class Inventory {
     }
 
     private int searchItem(InventoryItem inventoryItem) {
-        return TableSearch.find(items, new SearchPredicate() {
-            @Override
-            public boolean evaluate(Object obj) {
-                return inventoryItem.equals(obj);
-            }
-        });
+        return TableSearch.find(items, item -> item.equals(inventoryItem));
     }
 
     public InventoryItem[] getInventory(){

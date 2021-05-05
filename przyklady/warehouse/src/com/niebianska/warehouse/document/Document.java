@@ -2,19 +2,18 @@ package com.niebianska.warehouse.document;
 
 import com.niebianska.warehouse.inventory.Inventory;
 
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 public abstract class Document {
     protected final UUID number;
-    protected final DocumentLine[] lines;
+    protected final Iterable<DocumentLine> lines;
     protected DocumentStatus status;
     protected final DocumentType type;
 
-    Document(final DocumentType type, final DocumentLine[] lines) {
+    Document(final DocumentType type, final Iterable<DocumentLine> lines) {
         this.type = type;
-        this.number = UUID.randomUUID();
         this.lines = lines;
+        this.number = UUID.randomUUID();
         this.status = DocumentStatus.NEW;
     }
 
@@ -30,7 +29,7 @@ public abstract class Document {
         return number;
     }
 
-    public DocumentLine[] getLines() {
+    public Iterable<DocumentLine> getLines() {
         return lines;
     }
 
@@ -40,5 +39,10 @@ public abstract class Document {
         if (o == null || getClass() != o.getClass()) return false;
         final Document document = (Document) o;
         return Objects.equals(number, document.number);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 }

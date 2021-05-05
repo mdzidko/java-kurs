@@ -22,7 +22,6 @@ public class Main {
         Menu menu = new Menu(operations);
 
         menu.run();
-
     }
 
     private static Inventory initInventory() {
