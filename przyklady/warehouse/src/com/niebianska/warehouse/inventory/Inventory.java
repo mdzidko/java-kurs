@@ -5,9 +5,11 @@ import com.niebianska.warehouse.item.Item;
 import com.niebianska.warehouse.util.TableSearch;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Inventory {
-    private InventoryItem[] items = new InventoryItem[0];
+    private Map<Item, Long> items = new HashMap<>();
 
 
     public Inventory addItem(Item item, long quantity){

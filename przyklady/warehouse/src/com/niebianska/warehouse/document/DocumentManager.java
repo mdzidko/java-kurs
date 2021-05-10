@@ -5,10 +5,11 @@ import com.niebianska.warehouse.inventory.Inventory;
 import com.niebianska.warehouse.util.TableSearch;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.UUID;
 
 public class DocumentManager {
-    private Document[] documents = new Document[0];
+    private Map<UUID, Document> documents = new Document[0];
 
     public Document[] getDocuments() {
         return documents;

@@ -5,6 +5,9 @@ import com.niebianska.warehouse.inventory.Inventory;
 import com.niebianska.warehouse.ui.operations.*;
 import com.niebianska.warehouse.ui.Menu;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
 
     public static void main(String[] args) {
